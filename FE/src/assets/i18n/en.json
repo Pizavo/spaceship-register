@@ -1,0 +1,206 @@
+{
+  "default": {
+    "error": {
+      "default": "An error occurred",
+      "400": "Bad request sent",
+      "401": "Unauthenticated access",
+      "403": "Forbidden to access this resource",
+      "500": "Server error occurred"
+    }
+  },
+  "tags": {
+    "button": {
+      "submit": "Submit",
+      "create": "Create",
+      "update": "Update",
+      "delete": "Delete",
+      "detail": "Detail",
+      "edit": "Edit"
+    },
+    "th": {
+      "actions": "Actions",
+      "name": "Name",
+      "title": "Title"
+    }
+  },
+  "components": {
+    "404": "Page Not Found",
+    "login": {
+      "title": "Login",
+      "button": "Login",
+      "forgottenPassword": "Forgotten password?",
+      "signup": "Sign up",
+      "error": {
+        "default": "Login failed",
+        "badCredentials": "Bad credentials"
+      }
+    },
+    "navbar": {
+      "spaceships": {
+        "overview": "Spaceships",
+        "create": "Create Spaceship"
+      },
+      "logout": "Logout"
+    },
+    "signup": {
+      "title": "Sign up",
+      "passwordConfirmation": {
+        "info": "Password confirmation",
+        "error": "Passwords do not match"
+      },
+      "button": "Sign up",
+      "error": {
+        "default": "Sign up failed"
+      },
+      "success": "Signed up successful"
+    },
+    "spaceshipOverview": {
+      "title": "Spaceships",
+      "create": "Create Spaceship",
+      "edit": "Edit Spaceship",
+      "deleteConfirmation": "Do you really want to delete this spaceship?",
+      "success": {
+        "delete": "Spaceship deleted",
+        "create": "Spaceship created",
+        "update": "Spaceship updated"
+      },
+      "error": {
+        "delete": "Delete failed",
+        "load": "Load failed"
+      },
+      "badRequest": {
+        "delete": "Spaceship could not be deleted"
+      }
+    },
+    "spaceshipForm": {
+      "title": {
+        "create": "Create Spaceship",
+        "edit": "Edit Spaceship"
+      },
+      "error": {
+        "create": "Create failed",
+        "update": "Update failed",
+        "load": "Load failed"
+      },
+      "success": {
+        "create": "Created successful",
+        "update": "Updated successful"
+      }
+    },
+    "spaceshipClearances": {
+      "title": {
+        "create": "Create Clearance",
+        "edit": "Edit Clearance"
+      },
+      "success": {
+        "delete": "Clearance deleted",
+        "create": "Clearance created",
+        "update": "Clearance updated"
+      },
+      "error": {
+        "create": "Create failed",
+        "update": "Update failed",
+        "delete": "Delete failed",
+        "load": "Load failed"
+      },
+      "badRequest": {
+        "delete": "Clearance could not be deleted"
+      }
+    },
+    "spaceshipPositions": {
+      "title": {
+        "create": "Create Position",
+        "edit": "Edit Position"
+      },
+      "success": {
+        "delete": "Position deleted",
+        "create": "Position created",
+        "update": "Position updated"
+      },
+      "error": {
+        "create": "Create failed",
+        "update": "Update failed",
+        "delete": "Delete failed",
+        "load": "Load failed"
+      },
+      "badRequest": {
+        "delete": "Position could not be deleted"
+      }
+    },
+    "crew": {
+      "title": {
+        "create": "Create Crew Member",
+        "edit": "Edit Crew Member"
+      },
+      "success": {
+        "delete": "Crew Member deleted",
+        "create": "Crew Member created",
+        "update": "Crew Member updated"
+      },
+      "error": {
+        "create": "Create failed",
+        "update": "Update failed",
+        "delete": "Delete failed",
+        "load": "Load failed"
+      },
+      "badRequest": {
+        "delete": "Crew Member could not be deleted"
+      }
+    }
+  },
+  "models": {
+    "spaceship": {
+      "name": "Name",
+      "commission": "Commission",
+      "core": "Core",
+      "engine": "Engine",
+      "lifeSupportUnit": "Life Support Unit",
+      "crew": "Crew"
+    },
+    "user": {
+      "ownershipCode": "Ownership code",
+      "forename": "Forename",
+      "surname": "Surname",
+      "email": "Email",
+      "nickname": "Nickname",
+      "password": "Password"
+    },
+    "spaceshipCore": {
+      "aiVersion": "AI Version"
+    },
+    "spaceshipEngine": {
+      "lastRevision": "Last revision"
+    },
+    "spaceshipLifeSupportUnit": {
+      "lastMaintenance": "Last maintenance"
+    },
+    "spaceshipClearance": {
+      "level": "Level"
+    },
+    "spaceshipPosition": {
+      "name": "Name",
+      "description": "Description",
+      "clearance": "Clearance"
+    },
+    "crewMember": {
+      "person": "Person",
+      "position": "Position",
+      "specialClearance": "Special Clearance"
+    }
+  },
+  "services": {
+    "spaceship": {
+      "error": {
+        "spaceships": {
+          "load": "Spaceships could not be loaded"
+        }
+      }
+    },
+    "user": {
+      "logout": {
+        "error": "Logout failed"
+      }
+    }
+  }
+}
+

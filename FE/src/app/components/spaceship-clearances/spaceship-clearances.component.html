@@ -1,0 +1,50 @@
+<div class="col col-lg-4 col-md-7 col-9 mx-auto">
+  <div class="card card-dark">
+    <div class="card-header">
+      <h3>
+        {{translateUrl + '.title.' + (id ? 'edit' : 'create') | translate}}
+      </h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="mb-3">
+          <label class="form-label" for="level">
+            {{'models.spaceshipClearance.level' | translate}}
+          </label>
+          <input class="form-control" formControlName="level" id="level" type="number">
+        </div>
+        <div class="text-center">
+          <button [disabled]="form.invalid" class="btn btn-primary"
+                  type="submit">
+            {{'tags.button.' + (id ? 'update' : 'create') | translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <table class="table-dark w-100 text-center mt-5">
+    <thead>
+    <tr>
+      <th scope="col">{{'models.spaceshipClearance.level' | translate}}</th>
+      <th scope="col">{{'tags.th.actions' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let clearance of spaceship?.clearances" class="border-bottom">
+      <td>{{clearance.level}}</td>
+      <td>
+        <div class="d-grid gap-2 col-4 mx-auto my-2">
+          <button (click)="editClearance(clearance.id!)" class="btn btn-primary btn-sm">
+            {{'tags.button.edit' | translate}}
+          </button>
+          <button (click)="onDelete(clearance.id!)" class="btn btn-danger btn-sm">
+            {{'tags.button.delete' | translate}}
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

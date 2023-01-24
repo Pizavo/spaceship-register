@@ -1,0 +1,63 @@
+<div class="col col-lg-4 col-md-7 col-9 mx-auto">
+  <div class="card card-dark">
+    <div class="card-header">
+      <h3>
+        {{'components.signup.title' | translate}}
+      </h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="mb-3">
+          <label class="form-label" for="forename">
+            {{'models.user.forename' | translate}}
+          </label>
+          <input autocomplete="given-name" class="form-control" formControlName="forename" id="forename" type="text">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="surname">
+            {{'models.user.surname' | translate}}
+          </label>
+          <input autocomplete="family-name" class="form-control" formControlName="surname" id="surname" type="text">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="ownershipCode">
+            {{'models.user.ownershipCode' | translate}}
+          </label>
+          <input class="form-control" formControlName="ownershipCode" id="ownershipCode" type="text">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="email">
+            {{'models.user.email' | translate}}
+          </label>
+          <input autocomplete="email" class="form-control" formControlName="email" id="email" type="email">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="username">
+            {{'models.user.nickname' | translate}}
+          </label>
+          <input autocomplete="username" class="form-control" formControlName="username" id="username" type="text">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="password">
+            {{'models.user.password' | translate}}
+          </label>
+          <input autocomplete="new-password" class="form-control" formControlName="password" id="password"
+                 type="password">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="passwordConfirmation">
+            {{'components.signup.passwordConfirmation.info' | translate}}
+          </label>
+          <input autocomplete="new-password" class="form-control" formControlName="passwordConfirmation"
+                 id="passwordConfirmation"
+                 type="password">
+        </div>
+        <div class="text-center">
+          <button [disabled]="form.invalid" class="btn btn-primary" type="submit">
+            {{'components.signup.button' | translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="col col-lg-4 col-md-7 col-9 mx-auto">
+  <div class="card card-dark">
+    <div class="card-header">
+      <h3>
+        {{translateUrl + '.title.' + (id ? 'edit' : 'create') | translate}}
+      </h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="mb-3">
+          <label class="form-label" for="person">
+            {{'models.crewMember.person' | translate}}
+          </label>
+          <select class="form-select" formControlName="person" id="person">
+            <option *ngFor="let person of people" [value]="person.id">
+              {{person.forename}} {{person.surname}}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="position">
+            {{'models.crewMember.position' | translate}}
+          </label>
+          <select class="form-select" formControlName="position" id="position">
+            <option *ngFor="let position of (spaceship ? spaceship.positions : [])" [value]="position.id">
+              {{position.name}}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="specialClearance">
+            {{'models.crewMember.specialClearance' | translate}}
+          </label>
+          <select class="form-select" formControlName="specialClearance" id="specialClearance">
+            <option [value]="''"></option>
+            <option *ngFor="let clearance of (spaceship ? spaceship.clearances : [])" [value]="clearance.id">
+              {{clearance.level}}
+            </option>
+          </select>
+        </div>
+        <div class="text-center">
+          <button [disabled]="form.invalid" class="btn btn-primary"
+                  type="submit">
+            {{'tags.button.' + (id ? 'update' : 'create') | translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <table class="table-dark w-100 text-center mt-5">
+    <thead>
+    <tr>
+      <th scope="col">{{'models.crewMember.person' | translate}}</th>
+      <th scope="col">{{'models.crewMember.position' | translate}}</th>
+      <th scope="col">{{'models.crewMember.specialClearance' | translate}}</th>
+      <th scope="col">{{'tags.th.actions' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let member of spaceship?.crew" class="border-bottom">
+      <td>{{member.person.forename}} {{member.person.surname}}</td>
+      <td>{{member.position.name}}</td>
+      <td>{{member.specialClearance ? member.specialClearance.level : '❌'}}</td>
+      <td>
+        <div class="d-grid gap-2 col-4 mx-auto my-2">
+          <button (click)="editMember(member.id!)" class="btn btn-primary btn-sm">
+            {{'tags.button.edit' | translate}}
+          </button>
+          <button (click)="onDelete(member.id!)" class="btn btn-danger btn-sm">
+            {{'tags.button.delete' | translate}}
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

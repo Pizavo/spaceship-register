@@ -1,0 +1,40 @@
+<div class="col col-lg-4 col-md-7 col-9 mx-auto">
+  <div class="card card-dark">
+    <div class="card-header">
+      <h3>
+        {{'components.login.title' | translate}}
+      </h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="mb-3">
+          <label class="form-label" for="email">
+            {{'models.user.email' | translate}}
+          </label>
+          <input class="form-control" formControlName="email" id="email" type="text">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="password">
+            {{'models.user.password' | translate}}
+          </label>
+          <input class="form-control" formControlName="password" id="password" type="password">
+          <div class="form-text" id="forgottenPassword">
+            <a routerLink="/forgot-password">
+              {{'components.login.forgottenPassword' | translate}}
+            </a>
+          </div>
+        </div>
+        <div class="text-center">
+          <button [disabled]="form.invalid" class="btn btn-primary" type="submit">
+            {{'components.login.button' | translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="mt-2 text-center">
+    <a routerLink="/signup">
+      {{'components.login.signup' | translate}}
+    </a>
+  </div>
+</div>

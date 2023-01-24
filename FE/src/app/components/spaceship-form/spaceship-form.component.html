@@ -1,0 +1,99 @@
+<div class="col col-lg-4 col-md-7 col-9 mx-auto">
+  <div class="card card-dark">
+    <div class="card-header">
+      <h3>
+        {{'components.spaceshipForm.title.' + (isUpdate ? 'edit' : 'create') | translate}}
+      </h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="isUpdate ? formUpdate : formCreate">
+        <div class="mb-3">
+          <label class="form-label" for="name">
+            {{'models.spaceship.name' | translate}}
+          </label>
+          <input class="form-control" formControlName="name" id="name" type="text">
+        </div>
+        <div class="mb-3">
+          <div class="form-check form-switch d-flex justify-content-center">
+            <input class="form-check-input" formControlName="commission" id="commission" role="switch" type="checkbox">
+            <label class="form-check-label mx-2" for="commission">{{'models.spaceship.commission' | translate}}</label>
+          </div>
+        </div>
+
+        <div *ngIf="isUpdate">
+          <div class="mb-3 row">
+            <div class="col col-8">
+              <label class="form-label" for="core">
+                {{'models.spaceship.core' | translate}}
+              </label>
+              <select class="form-select" formControlName="core" id="core">
+                <option *ngFor="let core of cores" [value]="core.id">
+                  {{core.name}}
+                </option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="form-label" for="coreAiVersion">
+                {{'models.spaceshipCore.aiVersion' | translate}}
+              </label>
+              <input class="form-control" formControlName="coreAiVersion" id="coreAiVersion" type="text">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <div class="col col-8">
+              <label class="form-label" for="engine">
+                {{'models.spaceship.engine' | translate}}
+              </label>
+              <select class="form-select" formControlName="engine" id="engine">
+                <option *ngFor="let engine of engines" [value]="engine.id">
+                  {{engine.name}}
+                </option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="form-label" for="engineLastRevision">
+                {{'models.spaceshipEngine.lastRevision' | translate}}
+              </label>
+              <input class="form-control" formControlName="engineLastRevision" id="engineLastRevision" type="date">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <div class="col col-8">
+              <label class="form-label" for="lifeSupportUnit">
+                {{'models.spaceship.lifeSupportUnit' | translate}}
+              </label>
+              <select class="form-select" formControlName="lifeSupportUnit" id="lifeSupportUnit">
+                <option *ngFor="let lifeSupportUnit of lifeSupportUnits" [value]="lifeSupportUnit.id">
+                  {{lifeSupportUnit.name}}
+                </option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="form-label" for="lifeSupportUnitLastMaintenance">
+                {{'models.spaceshipLifeSupportUnit.lastMaintenance' | translate}}
+              </label>
+              <input class="form-control" formControlName="lifeSupportUnitLastMaintenance"
+                     id="lifeSupportUnitLastMaintenance" type="date">
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button [disabled]="isUpdate ? formUpdate.invalid : formCreate.invalid" class="btn btn-primary"
+                  type="submit">
+            {{'tags.button.' + (isUpdate ? 'update' : 'create') | translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="isUpdate" class="card card-dark rounded mt-3 w-50 mx-auto">
+    <div class="card-body rounded text-center">
+      <div class="d-grid gap-2 mx-auto my-2">
+        <button class="btn btn-info" routerLink="/spaceship/{{id}}/clearances">Manage Clearances</button>
+        <button class="btn btn-info" routerLink="/spaceship/{{id}}/positions">Manage Positions</button>
+        <button class="btn btn-info" routerLink="/spaceship/{{id}}/crew">Manage Crew</button>
+      </div>
+    </div>
+  </div>
+</div>

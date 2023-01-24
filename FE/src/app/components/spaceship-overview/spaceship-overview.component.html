@@ -1,0 +1,27 @@
+<div class="col col-10 mx-auto">
+  <table class="table-dark w-100 text-center">
+    <thead>
+    <tr>
+      <th scope="col">{{'tags.th.name' | translate}}</th>
+      <th scope="col">{{'models.spaceship.commission' | translate}}</th>
+      <th scope="col">{{'tags.th.actions' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let spaceship of spaceships" class="border-bottom">
+      <td>{{spaceship.name}}</td>
+      <td>{{spaceship.commission ? '✔️' : '❌'}}</td>
+      <td>
+        <div class="d-grid gap-2 col-4 mx-auto my-2">
+          <button class="btn btn-primary btn-sm" routerLink="/spaceship/{{spaceship.id}}">
+            {{'tags.button.edit' | translate}}
+          </button>
+          <button (click)="onDelete(spaceship.id!)" class="btn btn-danger btn-sm">
+            {{'tags.button.delete' | translate}}
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
