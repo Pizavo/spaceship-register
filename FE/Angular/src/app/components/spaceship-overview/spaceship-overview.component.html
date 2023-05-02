@@ -1,0 +1,37 @@
+<div class="col col-10 mx-auto">
+  <div class="mb-3 col-2">
+    <label class="form-label" for="search">
+      Search:
+    </label>
+    <input (ngModelChange)="doSearch()" [(ngModel)]="search" class="form-control" id="search" type="text">
+  </div>
+
+  <table [dataSource]="dataSource" mat-table matSort>
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> {{'tags.th.name' | translate}} </th>
+      <td *matCellDef="let spaceship" mat-cell> {{spaceship.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="commission">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> {{'models.spaceship.commission' | translate}} </th>
+      <td *matCellDef="let spaceship" mat-cell> {{spaceship.commission ? '✔️' : '❌'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th *matHeaderCellDef mat-header-cell> {{'tags.th.actions' | translate}} </th>
+      <td *matCellDef="let spaceship" mat-cell>
+        <div class="d-grid gap-2 col-4 mx-auto my-2">
+          <button class="btn btn-primary btn-sm" routerLink="/spaceship/{{spaceship.id}}">
+            {{'tags.button.edit' | translate}}
+          </button>
+          <button (click)="onDelete(spaceship.id!)" class="btn btn-danger btn-sm">
+            {{'tags.button.delete' | translate}}
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[2, 5, 10]" showFirstLastButtons></mat-paginator>
+</div>

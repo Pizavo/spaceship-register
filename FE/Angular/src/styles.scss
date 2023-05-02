@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Bootstrap 5.2 & icons */
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap-icons";
+
+/* Angular Notifier */
+@import "node_modules/angular-notifier/styles";
+
+body {
+  @extend .bg-dark;
+  @extend .text-light;
+}
+
+.card-dark {
+  $bg-color: #313131;
+
+  @extend .bg-dark;
+
+  color: #e8e8e8;
+
+  > .card-header {
+
+  }
+
+  > .card-body {
+    background-color: rgba($bg-color, 0.8);
+  }
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

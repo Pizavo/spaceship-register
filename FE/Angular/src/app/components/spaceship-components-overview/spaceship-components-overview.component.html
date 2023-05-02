@@ -1,0 +1,95 @@
+<div class="col col-10 mx-auto">
+  <nav>
+    <div class="nav nav-tabs" id="spaceship-components-tab" role="tablist">
+      <button aria-controls="cores" aria-selected="true" class="nav-link active" data-bs-target="#cores"
+              data-bs-toggle="tab"
+              id="cores-tab" role="tab" type="button">Cores
+      </button>
+      <button aria-controls="engines" aria-selected="false" class="nav-link" data-bs-target="#engines"
+              data-bs-toggle="tab" id="engines-tab"
+              role="tab" type="button">Engines
+      </button>
+      <button aria-controls="life-support-units" aria-selected="false" class="nav-link"
+              data-bs-target="#life-support-units"
+              data-bs-toggle="tab" id="life-support-units-tab" role="tab" type="button">Life Support Units
+      </button>
+    </div>
+  </nav>
+  <div class="tab-content" id="spaceship-components-tabContent">
+    <div aria-labelledby="cores-tab" class="tab-pane fade show active" id="cores" role="tabpanel">
+      <table #coresTable [dataSource]="cores" mat-table matSort>
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+          <td *matCellDef="let core" mat-cell> {{core.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="powerConsumption">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Power Consumption</th>
+          <td *matCellDef="let core" mat-cell> {{core.powerConsumption}} </td>
+        </ng-container>
+        <ng-container matColumnDef="computationPower">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header> Computation Power</th>
+          <td *matCellDef="let core" mat-cell> {{core.computationPower}} </td>
+        </ng-container>
+        <ng-container matColumnDef="fullyConscious">
+          <th *matHeaderCellDef mat-header-cell>Fully Conscious</th>
+          <td *matCellDef="let core" mat-cell>{{core.fullyConscious ? '✔️' : '❌'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="helmControl">
+          <th *matHeaderCellDef mat-header-cell>Helm Control</th>
+          <td *matCellDef="let core" mat-cell>{{core.helmControl ? '✔️' : '❌'}}</td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="coresColumns" mat-header-row></tr>
+        <tr *matRowDef="let coresRow; columns: coresColumns;" mat-row></tr>
+      </table>
+
+      <mat-paginator #coresPaginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+    <div aria-labelledby="engines-tab" class="tab-pane fade" id="engines" role="tabpanel">
+      <table #enginesTable [dataSource]="engines" mat-table matSort>
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+          <td *matCellDef="let engine" mat-cell> {{engine.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="powerConsumption">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Power Consumption</th>
+          <td *matCellDef="let engine" mat-cell> {{engine.powerConsumption}} </td>
+        </ng-container>
+        <ng-container matColumnDef="acceleration">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Acceleration</th>
+          <td *matCellDef="let engine" mat-cell> {{engine.acceleration}} </td>
+        </ng-container>
+        <ng-container matColumnDef="maxSpeed">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Max Speed</th>
+          <td *matCellDef="let engine" mat-cell> {{engine.maxSpeed}} </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="enginesColumns" mat-header-row></tr>
+        <tr *matRowDef="let enginesRow; columns: enginesColumns;" mat-row></tr>
+      </table>
+
+      <mat-paginator #enginesPaginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+    <div aria-labelledby="life-support-units-tab" class="tab-pane fade" id="life-support-units" role="tabpanel">
+      <table #lifeSupportUnitsTable [dataSource]="lifeSupportUnits" mat-table matSort>
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+          <td *matCellDef="let lifeSupportUnit" mat-cell> {{lifeSupportUnit.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="powerConsumption">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Power Consumption</th>
+          <td *matCellDef="let lifeSupportUnit" mat-cell> {{lifeSupportUnit.powerConsumption}} </td>
+        </ng-container>
+        <ng-container matColumnDef="passengerCapacity">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Passenger Capacity</th>
+          <td *matCellDef="let lifeSupportUnit" mat-cell> {{lifeSupportUnit.passengerCapacity}} </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="lifeSupportUnitsColumns" mat-header-row></tr>
+        <tr *matRowDef="let lifeSupportUnitsRow; columns: lifeSupportUnitsColumns;" mat-row></tr>
+      </table>
+
+      <mat-paginator #lifeSupportUnitsPaginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark background-gradient purple">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Spaceship Register</a>
+    <div class="collapse navbar-collapse">
+      <ul *ngIf="isLoggedIn()" class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/overview">
+            {{'components.navbar.spaceships.overview' | translate}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/spaceship">
+            {{'components.navbar.spaceships.create' | translate}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/components">
+            Spaceship Components
+          </a>
+        <li class="nav-item">
+          <a (click)="logout()" class="nav-link" style="cursor: pointer">
+            {{'components.navbar.logout' | translate}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
