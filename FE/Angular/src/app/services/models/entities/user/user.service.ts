@@ -5,9 +5,10 @@ import {AuthenticationRequest} from '../../../../models/http/requests/authentica
 import {AuthenticationResponse} from '../../../../models/http/responses/authentication-response';
 import {Observable} from 'rxjs';
 
-@Injectable({
-              providedIn: 'root',
-            })
+@Injectable(
+  {
+    providedIn: 'root',
+  })
 export class UserService extends BaseService<User> {
   constructor() {
     super('/user');
@@ -22,11 +23,9 @@ export class UserService extends BaseService<User> {
     };
 
     this.handleError(this.http.post<AuthenticationResponse>(`${this.url}/authenticate`, authenticationRequest), options).subscribe(
-      {
-        next: (response) => {
-          this.authService.token = response.token;
-          this.router.navigate(['/overview']);
-        },
+      (response) => {
+        this.authService.token = response.token;
+        this.router.navigate(['/overview']);
       });
   }
 

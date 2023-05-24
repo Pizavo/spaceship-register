@@ -12,11 +12,12 @@ import {ServiceOptions} from '../../services/models/base-service';
 import {TranslateService} from '@ngx-translate/core';
 import {NotifierService} from 'angular-notifier';
 
-@Component({
-             selector: 'app-spaceship-clearances',
-             templateUrl: './spaceship-clearances.component.html',
-             styleUrls: ['./spaceship-clearances.component.scss'],
-           })
+@Component(
+  {
+    selector: 'app-spaceship-clearances',
+    templateUrl: './spaceship-clearances.component.html',
+    styleUrls: ['./spaceship-clearances.component.scss'],
+  })
 export class SpaceshipClearancesComponent implements OnInit {
   public form = this.formBuilder.group(
     {

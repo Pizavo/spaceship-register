@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   private _passwordValidators: ValidatorFn[] = [
     Validators.required,
     Validators.minLength(8),
-    Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*\/\-()?])(?=.{16,})/),
+    Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*\/\-()?])(?=.{8,})/),
   ];
 
   form: FormGroup = new FormGroup(
@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
       forename: new FormControl('', [Validators.required]),
       surname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      username: new FormControl('', [Validators.required]),
+      nickname: new FormControl('', [Validators.required]),
       password: new FormControl('', this._passwordValidators),
       passwordConfirmation: new FormControl('', this._passwordValidators),
     });
@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
       ownershipCode: this.form.get('ownershipCode')!.value,
       password: this.form.get('password')!.value,
       surname: this.form.get('surname')!.value,
-      nickname: this.form.get('username')!.value,
+      nickname: this.form.get('nickname')!.value,
     };
 
     if (user.password !== this.form.get('passwordConfirmation')!.value) {

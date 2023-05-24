@@ -30,6 +30,8 @@ import {
 } from './components/spaceship-components-overview/spaceship-components-overview.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule(
   {
@@ -70,6 +72,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
       MatDatepickerModule,
       MatNativeDateModule,
       NgbModule,
+      MatSlideToggleModule,
+      MatSelectModule,
     ],
     providers: [
       {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},

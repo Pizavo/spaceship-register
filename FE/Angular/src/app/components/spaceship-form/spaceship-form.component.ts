@@ -13,12 +13,11 @@ import {EngineService} from '../../services/models/entities/components/engine/en
 import {
   LifeSupportUnitService,
 } from '../../services/models/entities/components/life-support-unit/life-support-unit.service';
-import {Person} from '../../models/entities/personnel/person';
 import {PersonService} from '../../services/models/entities/personnel/person/person.service';
 import {DatePipe} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {finalize} from 'rxjs';
-import {ErrorStateMatcher} from '@angular/material/core';
+import {DateTime} from 'luxon';
 
 @Component({
              selector: 'app-spaceship-form',
@@ -47,7 +46,6 @@ export class SpaceshipFormComponent implements OnInit {
   public cores: Core[] = [];
   public engines: Engine[] = [];
   public lifeSupportUnits: LifeSupportUnit[] = [];
-  public people: Person[] = [];
   private spaceship?: Spaceship;
   private datePipe: DatePipe = new DatePipe('en-US');
 
@@ -62,7 +60,6 @@ export class SpaceshipFormComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private translate: TranslateService,
-    public matcher: ErrorStateMatcher,
   ) { }
 
   private _id: string | null = null;
@@ -116,6 +113,16 @@ export class SpaceshipFormComponent implements OnInit {
     }
   }
 
+  dateInputToLuxonDateTime(date: Date): DateTime {
+    let transformed = DateTime.fromJSDate(date);
+
+    if (!transformed.isValid) {
+      transformed = DateTime.fromISO(date.toString());
+    }
+
+    return transformed.set({day: transformed.day + 1, hour: 0, minute: 0, second: 0, millisecond: 0});
+  }
+
   onSubmit() {
     const options: ServiceOptions = {
       errorMessages: {
@@ -136,16 +143,20 @@ export class SpaceshipFormComponent implements OnInit {
         aiVersion: this.formUpdate.get('coreAiVersion')!.value,
       };
 
+      const lastRevision = this.dateInputToLuxonDateTime(this.formUpdate.get('engineLastRevision')!.value);
+
       spaceship.engine = {
         spaceship: this.spaceship!,
         type: this.engines.find(engine => engine.id === this.formUpdate.get('engine')!.value)!,
-        lastRevision: this.formUpdate.get('engineLastRevision')!.value,
+        lastRevision: lastRevision.toJSDate(),
       };
+
+      const lastMaintenance = this.dateInputToLuxonDateTime(this.formUpdate.get('lifeSupportUnitLastMaintenance')!.value);
 
       spaceship.lifeSupportUnit = {
         spaceship: this.spaceship!,
         type: this.lifeSupportUnits.find(lifeSupportUnit => lifeSupportUnit.id === this.formUpdate.get('lifeSupportUnit')!.value)!,
-        lastMaintenance: this.formUpdate.get('lifeSupportUnitLastMaintenance')!.value,
+        lastMaintenance: lastMaintenance.toJSDate(),
       };
 
       this.spaceshipService.update(spaceship, options).subscribe(

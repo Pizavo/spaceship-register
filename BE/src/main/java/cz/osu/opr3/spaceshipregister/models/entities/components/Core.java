@@ -2,12 +2,14 @@ package cz.osu.opr3.spaceshipregister.models.entities.components;
 
 import cz.osu.opr3.spaceshipregister.models.entities.superclasses.Component;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @Entity
@@ -24,5 +26,4 @@ public class Core extends Component {
 	
 	@OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SpaceshipCore> spaceshipCores = new ArrayList<>();
-	
 }

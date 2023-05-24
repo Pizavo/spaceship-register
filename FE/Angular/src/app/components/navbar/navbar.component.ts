@@ -8,12 +8,12 @@ import {UserService} from '../../services/models/entities/user/user.service';
              styleUrls: ['./navbar.component.scss'],
            })
 export class NavbarComponent implements OnInit {
-  public isLoggedIn = () => this.authService.isAuthenticated;
-
   constructor(
     private authService: AuthenticationService,
     private userService: UserService,
   ) { }
+
+  public isLoggedIn = () => this.authService.isAuthenticated;
 
   ngOnInit(): void {
   }

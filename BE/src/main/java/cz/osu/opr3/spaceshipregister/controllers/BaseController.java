@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
 public class BaseController<ID extends Serializable, E extends BaseEntity<ID>, S extends BaseService<ID, E, ? extends JpaRepository<E, ID>>> {
 	protected final S service;
 	

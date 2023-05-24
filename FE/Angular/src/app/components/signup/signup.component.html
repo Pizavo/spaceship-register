@@ -37,11 +37,11 @@
           <small *ngIf="form.get('email')!.invalid" style="color: red;">This is not a valid e-mail.</small>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="username">
+          <label class="form-label" for="nickname">
             {{'models.user.nickname' | translate}}
           </label>
-          <input autocomplete="username" class="form-control" formControlName="username" id="username" type="text">
-          <small *ngIf="form.get('username')!.invalid" style="color: red;">This is field is required.</small>
+          <input autocomplete="username" class="form-control" formControlName="nickname" id="nickname" type="text">
+          <small *ngIf="form.get('nickname')!.invalid" style="color: red;">This is field is required.</small>
         </div>
         <div class="mb-3">
           <label class="form-label" for="password">

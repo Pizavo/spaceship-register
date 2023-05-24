@@ -15,7 +15,6 @@ import {MatSort} from '@angular/material/sort';
     styleUrls: ['./spaceship-overview.component.scss'],
   })
 export class SpaceshipOverviewComponent implements OnInit, AfterViewInit {
-
   displayedColumns: string[] = ['name', 'commission', 'actions'];
   spaceships: Spaceship[] = [];
   translateUrl = 'components.spaceshipOverview';
@@ -29,7 +28,8 @@ export class SpaceshipOverviewComponent implements OnInit, AfterViewInit {
     private spaceshipService: SpaceshipService,
     private notifier: NotifierService,
     private translate: TranslateService,
-  ) { }
+  ) {
+  }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
